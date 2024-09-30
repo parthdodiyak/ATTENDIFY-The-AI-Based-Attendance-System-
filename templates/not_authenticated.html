@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Not Authenticated</title>
+</head>
+<body>
+    <header>
+        <h1>Welcome to the Not Authenticated Page</h1>
+    </header>
+    
+    <main>
+        <p>You are not authenticated as a student.</p>
+        <p>Please log in or register to access this page.</p>
+        
+        <!-- Example: Displaying fetched data -->
+        <h2>Example Data:</h2>
+        <ul>
+            <li>{{ example_data }}</li>
+            <!-- If you have multiple data items, you can loop through them -->
+            <!-- {% for item in example_data_list %}
+                 <li>{{ item }}</li>
+                 {% endfor %} -->
+        </ul>
+        
+        <!-- Add login or registration links/buttons here -->
+        <a href="{% url 'signin' %}">Login</a>
+        <a href="{% url 'register' %}">Register</a>
+    </main>
+
+    <footer>
+        <!-- Add footer content here -->
+    </footer>
+</body>
+</html>

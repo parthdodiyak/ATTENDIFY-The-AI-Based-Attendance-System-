@@ -1,0 +1,44 @@
+{% extends "base.html" %} <!-- Extends the base template -->
+{% load static %} <!-- Load static files -->
+
+{% block title %} Sign In {% endblock %} <!-- Set the title of the page -->
+
+{% block body %} <!-- Define the body content -->
+
+<link rel="stylesheet" href="{% static 'css/student.css' %}" type="text/css"> <!-- Link to your CSS file -->
+
+
+<div class="container">
+    <div class="form-container">
+        <h2>Signin</h2>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% for message in messages %}
+                <div class="alert alert-danger" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            <div class="mb-3">
+                <label for="enrollmentNumber" class="form-label">Enrollment Number</label>
+                <input type="text" class="form-control" id="enrollmentNumber" name="enrollmentNumber" required>
+            </div>
+            
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            
+            <button type="submit" class="btn btn-primary btn-block">signin</button>
+            
+            <!-- Forgot Password Link/Button -->
+            <div class="mt-3">
+                <a href="{% url 'forgot_pass' %}">Forgot Password?</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

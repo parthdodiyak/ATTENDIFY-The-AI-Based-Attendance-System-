@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} hey {% endblock %}
+
+{% block body %}
+<div style="background-color: #e6f7ff; display: flex; justify-content: center; align-items: center; height: 100vh;">
+    <div style="background-color: #ffffff; padding: 20px; border-radius: 8px; box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);">
+        <h2 style="text-align: center;">Enter Faculty Password</h2>
+        <form id="secretPasswordForm">
+            <label for="secretPassword" style="display: block; margin-bottom: 10px;">Secret Password:</label>
+            <input type="password" id="secretPassword" name="secretPassword" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; margin-bottom: 15px;" required>
+            <button type="submit" style="background-color: #007bff; color: #ffffff; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer;">Submit</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    document.getElementById("secretPasswordForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Prevent default form submission
+
+        var secretPassword = document.getElementById("secretPassword").value;
+
+        // Check if the entered secret password matches the expected value
+        if (secretPassword === "123123") {
+            // Redirect to the registration page
+            window.location.href = "{% url 'faculty_registration' %}";
+        } else {
+            alert("Incorrect secret password. Please try again.");
+        }
+    });
+</script>
+{% endblock %}

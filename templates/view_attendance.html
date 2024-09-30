@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} hey {% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/attendance.css' %}" type="text/css">
+<h1>Attendance View</h1>
+
+<div class="search-container">
+    <input type="text" id="searchDateInput" onkeyup="searchByDate()" placeholder="Search by Date...">
+    <input type="text" id="searchSubjectInput" onkeyup="searchBySubject()" placeholder="Search by Subject...">
+    
+</div>
+
+<table id="attendanceTable">
+    <thead>
+        <tr>
+            <th>Enrollment Number</th>
+            <th>Name</th>
+            <th>Lecture Name</th>
+            <th>Date</th>
+            <th>Time slot</th>
+            <th>Semester</th>
+            <th>Faculty</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for record in attendance_records %}
+        <tr>
+            <td>{{ record.student.enrollmentNumber }}</td>
+            <td>{{ record.student.user_name }}</td>
+            <td>{{ record.lecture_name }}</td>
+            <td>{{ record.attendance_date }}</td>
+            <td>{{ record.time_slot }}</td>
+            <td>{{ record.semester }}</td>
+            <td>{{ record.faculty_name }}</td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script>
+function searchByDate() {
+    var dateInput, dateFilter, subjectInput, subjectFilter, table, tr, tdDate, tdSubject, i;
+    dateInput = document.getElementById("searchDateInput");
+    dateFilter = dateInput.value.toUpperCase();
+    subjectInput = document.getElementById("searchSubjectInput");
+    subjectFilter = subjectInput.value.toUpperCase();
+    table = document.getElementById("attendanceTable");
+    tr = table.getElementsByTagName("tr");
+
+    for (i = 0; i < tr.length; i++) {
+        tdDate = tr[i].getElementsByTagName("td")[3]; // Column index for Date
+        tdSubject = tr[i].getElementsByTagName("td")[2]; // Column index for Subject
+        if (tdDate && tdSubject) {
+            txtDate = tdDate.textContent || tdDate.innerText;
+            txtSubject = tdSubject.textContent || tdSubject.innerText;
+            if (txtDate.toUpperCase().indexOf(dateFilter) > -1 && txtSubject.toUpperCase().indexOf(subjectFilter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}
+
+function searchBySubject() {
+    var dateInput, dateFilter, subjectInput, subjectFilter, table, tr, tdDate, tdSubject, i;
+    dateInput = document.getElementById("searchDateInput");
+    dateFilter = dateInput.value.toUpperCase();
+    subjectInput = document.getElementById("searchSubjectInput");
+    subjectFilter = subjectInput.value.toUpperCase();
+    table = document.getElementById("attendanceTable");
+    tr = table.getElementsByTagName("tr");
+
+    for (i = 0; i < tr.length; i++) {
+        tdDate = tr[i].getElementsByTagName("td")[3]; // Column index for Date
+        tdSubject = tr[i].getElementsByTagName("td")[2]; // Column index for Subject
+        if (tdDate && tdSubject) {
+            txtDate = tdDate.textContent || tdDate.innerText;
+            txtSubject = tdSubject.textContent || tdSubject.innerText;
+            if (txtDate.toUpperCase().indexOf(dateFilter) > -1 && txtSubject.toUpperCase().indexOf(subjectFilter) > -1) {
+                tr[i].style.display = "";
+            } else {
+                tr[i].style.display = "none";
+            }
+        }
+    }
+}
+</script>
+
+
+{% endblock %}

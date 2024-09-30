@@ -1,0 +1,22 @@
+.container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .button {
+    width: auto;
+    height: 120px;
+    border-radius: 50%;
+    line-height: 120px;
+    text-align: center;
+    font-size: 18px;
+    margin: 20px; /* Added space between buttons */
+    cursor: pointer;
+    transition: transform 0.3s;
+  }
+
+  .button:hover {
+    transform: scale(1.1);
+  }

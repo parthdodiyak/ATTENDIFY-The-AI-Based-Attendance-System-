@@ -1,0 +1,25 @@
+.container {
+    margin-top: 50px; /* Adjust as needed to center the form vertically */
+}
+
+.card {
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.card-title {
+    text-align: center;
+}
+
+.card-body {
+    padding: 40px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}

@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} hey   {% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/fdetail.css' %}" type="text/css">
+<div class="wrapper">
+    <form class="form" method="POST" action="{% url 'take_attendance' %}">
+        {% csrf_token %}
+      <div class="form-group">
+        <label for="semester">select semester: IT</label>
+        <select id="semester" name="semester" class="select-field">
+          <option value="1st sem">1st sem</option>
+          <option value="2nd sem">2nd sem</option>
+          <option value="3rd sem">3rd sem</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="faculty">Faculty Name:</label>
+        <select id="faculty" name="faculty_name" class="select-field">
+          <option value="smith">Dr. Smith</option>
+          <option value="johnson">Prof. Johnson</option>
+          <option value="patel">Dr. Patel</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="lecture-name">Lecture Name:</label>
+        <select id="lecture-name" name="lecture_name" class="select-field">
+          <option value="math101">Math 101</option>
+          <option value="eng202">English 202</option>
+          <option value="phy303">Physics 303</option>
+          <!-- Add more lecture options here -->
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="time-slot">Time Slot:</label>
+        <select id="time-slot" name="time_slot" class="select-field">
+          <option value="8-10">8:00 AM - 10:00 AM</option>
+          <option value="10-12">10:00 AM - 12:00 PM</option>
+          <option value="1-3">1:00 PM - 3:00 PM</option>
+        </select>
+      </div>
+      <button type="submit" class="submit-button">Submit</button>
+    </form>
+    <button type="submit" class="submit-button">Submit</button>
+      
+      <!-- View Attendance button -->
+      <a href="{% url 'view_attendance' %}" class="view-attendance-button">View Attendance</a>
+  </div>
+  {% endblock %}
+
+
+
+

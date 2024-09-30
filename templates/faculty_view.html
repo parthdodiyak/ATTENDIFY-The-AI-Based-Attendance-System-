@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} hey   {% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/attendance.css' %}" type="text/css">
+<h1>Attendance View</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Enrollment Number</th>
+                <th>Name</th>
+                <th>Lecture Name</th>
+                <th>Date</th>
+                <th>Time slot</th>
+                <th>semester</th>
+                <th>faculty</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for record in attendance_records %}
+            <!-- Replace the below static data with dynamic data from your Django view -->
+            <tr>
+                <td>{{ record.student.enrollmentNumber }}</td>
+                <td>{{ record.student.user_name }}</td>
+                <td>{{ record.lecture_name }}</td>
+                <td>{{ record.attendance_date }}</td>
+                <td>{{ record.time_slot }}</td>
+                <td>{{ record.semester }}</td>
+                <td>{{ record.faculty_name }}</td>
+            </tr>
+        {% endfor %}    
+            <!-- Add more rows for additional attendance records -->
+        </tbody>
+    </table>
+        {% if attendance_records %}
+            <div style="text-align: center;">
+            <form method="post" action="{% url 'generate_attendance_pdf'  %}">
+                {% csrf_token %}
+            <button type="submit" style="margin-top: 20px; margin-bottom: 20px; background-color: red;">Generate PDF</button>
+            </form>
+            </div>
+        {% endif %}
+
+
+  {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

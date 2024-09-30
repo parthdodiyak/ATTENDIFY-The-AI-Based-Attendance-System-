@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} hey   {% endblock %}
+
+{% block body %}
+<link rel="stylesheet" href="{% static 'css/index.css' %}" type="text/css">
+<div class="container">
+    <div class="form-container">
+        <h2>Register</h2>
+        <form action="/register/" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% for message in messages %}
+                <div class="alert alert-danger" role="alert">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            <div class="mb-3">
+                <label for="enrollmentNumber" class="form-label">Enrollment Number</label>
+                <input type="text" class="form-control" id="enrollmentNumber" name="enrollmentNumber" required>
+            </div>
+            <div class="mb-3">
+                <label for="department" class="form-label">Department</label>
+                <select class="form-select" id="department" name="department" required>
+                    <option value="" disabled selected>Select Department</option>
+                    <option value="Information Technology">Information Technology</option>
+                    <option value="Electrical">Electrical</option>
+                    <option value="Mechanical">Mechanical</option>
+                    <option value="Civil">Civil</option>
+                    <!-- Add more options as needed -->
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="use_rname" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="user_name" name="user_name" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+            </div>
+            <div class="mb-3">
+                <label for="confirmPassword" class="form-label">Confirm Password</label>
+                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" required>
+            </div>
+            <div class="mb-3">
+                <label for="avatar" class="form-label">Choose your avatar</label>
+                <input type="file" class="form-control" id="avatar" name="avatar" accept="image/*" required>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Register</button>
+        </form>
+    </div>
+</div>
+
+
+
+
+
+
+  {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

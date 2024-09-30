@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %} hey   {% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card mt-5">
+                <div class="card-header bg-primary text-white">
+                    <h5 class="card-title">Password Reset Link Sent</h5>
+                </div>
+                <div class="card-body">
+                    {% for message in messages %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ message }}
+                    </div>
+                    {% endfor %}
+                    <p class="card-text">An email with a password reset link has been sent to {{ reset_link }}.</p>
+                    <a href="{% url 'signin' %}" class="btn btn-primary">Back to Login</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+  {% endblock %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
